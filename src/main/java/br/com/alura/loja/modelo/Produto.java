@@ -1,8 +1,5 @@
 
 package br.com.alura.loja.modelo;
-
-import jdk.jfr.Category;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,13 +12,20 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(name = "nome")
     private  String nome;
+    @Column(name = "descricao")
     private String descricao;
+    @Column(name = "preco")
     private BigDecimal preco;
+    @Column(name = "dataCadastro")
     private LocalDate dataCadastro = LocalDate.now();
     // anotacao muitos para um
+
     @ManyToOne
     private Categoria categoria;
+
+    public Produto(){}
 
     public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
         this.nome = nome;
